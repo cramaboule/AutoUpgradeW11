@@ -1,9 +1,10 @@
 # AutoUpgradeW11
-Automatique upgrade to Windows 11
+Automatique upgrade to Windows 11 over Windows 10.
 
-Put in the same Directory your *.ISO file, Ini file with the name of the Windows11 ISO file, the [Skip_TPM_Check_on_Dynamic_Update.cmd](https://github.com/AveYo/MediaCreationTool.bat/blob/main/bypass11/Skip_TPM_Check_on_Dynamic_Update.cmd) from [MediaCreationTool.bat](https://github.com/AveYo/MediaCreationTool.bat).
+Put in the same Directory the AutoUpgradeW11.exe file, the *.ISO file, version.ini file, the [Skip_TPM_Check_on_Dynamic_Update.cmd](https://github.com/AveYo/MediaCreationTool.bat/blob/main/bypass11/Skip_TPM_Check_on_Dynamic_Update.cmd) from [MediaCreationTool.bat](https://github.com/AveYo/MediaCreationTool.bat).
 ISO can be made from [uupdump.net](https://uupdump.net/)
+Put in the INI file the name of your ISO file.
 
-Compile with AutoIt and run. Windows 11 will be deployed over Windows 10.
+Compiled with AutoIt.
 
 Have fun.
