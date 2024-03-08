@@ -15,8 +15,8 @@
 #cs ----------------------------------------------------------------------------
 
 	AutoIt Version: 3.3.16.0
-	Author:         Marc Arm
-	Date:			December 2022
+	Author:         Cramaboule
+	Date:		December 2022
 
 	Script Function: Auto Upgrade to W11
 
