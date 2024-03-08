@@ -1,19 +1,22 @@
 #Region ;**** Directives created by AutoIt3Wrapper_GUI ****
+#AutoIt3Wrapper_Icon=..\sbg.ico
 #AutoIt3Wrapper_UseX64=y
 #AutoIt3Wrapper_Res_Description=Auto Upgrade W11
 #AutoIt3Wrapper_Res_ProductName=Auto Upgrade W11
+#AutoIt3Wrapper_Res_CompanyName=Société Biblique de Genève
+#AutoIt3Wrapper_Res_LegalCopyright=2022 Société Biblique de Genève
 #AutoIt3Wrapper_Run_Tidy=y
 #Tidy_Parameters=/reel
 #AutoIt3Wrapper_Run_Au3Stripper=y
 #Au3Stripper_Parameters=/mo
-#AutoIt3Wrapper_Res_ProductVersion=1.0.1.1
-#AutoIt3Wrapper_Res_Fileversion=1.0.1.1
+#AutoIt3Wrapper_Res_ProductVersion=1.0.1.2
+#AutoIt3Wrapper_Res_Fileversion=1.0.1.2
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 #cs ----------------------------------------------------------------------------
 
 	AutoIt Version: 3.3.16.0
-	Author:         Cramaboule
-	Date:			      December 2022
+	Author:         Marc Arm
+	Date:			December 2022
 
 	Script Function: Auto Upgrade to W11
 
@@ -22,8 +25,9 @@
 	Bug: 	Not known
 
 	To do:
-
-	V1.0.1.1	14.02.2022:
+	V1.0.1.2	10.11.2023:
+				Added an ini file to be able to change the ISO verion
+	V1.0.1.1	14.02.2023:
 				Fixed: Mounting ISO with spaces in path in now fixed.
 				Changed: Alwayas unzipp and always install TPM with the 'install' argument.
 				Fixed: Small bugs
@@ -44,9 +48,15 @@
 #include <AutoItConstants.au3>
 #include <MsgBoxConstants.au3>
 
-$sIsoFile = @ScriptDir & '\22621.963.221202-2359.NI_RELEASE_SVC_PROD1_CLIENTPRO_OEMRET_X64FRE_FR-FR.ISO'
 Global $Title = 'Auto Upgrade W11'
 Global $font = 'Segoe UI Light', $sFinalMessage
+Global $sFileIni = @ScriptDir & '\version.ini'
+$sIsoFile = IniRead($sFileIni, 'Version', 'iso', 'error')
+If $sIsoFile = 'error' Then
+	MsgBox(16, 'Error', 'There is no version.ini file or it is in the wrong format' & @CRLF & 'The program will exit')
+	Exit
+EndIf
+$sIsoFile = @ScriptDir & '\' & $sIsoFile
 SplashTextOn($Title, '', 300, 400, -1, -1, $DLG_TEXTLEFT, $font, 14, 400)
 _Splash('Checking free space')
 $iFreeSpace = DriveSpaceFree(@HomeDrive & "\") ; usualy C:\
